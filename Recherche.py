@@ -4,34 +4,51 @@ class Recherche:
     def __init__(self, data):
         self.data = data
 
-    def recherche(self, s):
+    def recherche(self, s:str):
         result = []
+        s = s.lower()
+
+        if s in "gratuit":
+            return self.filtrer_gratuit()
 
         for cle in self.data.keys():
-            if cle[:len(s)] == s:
-                result.append(("nom", self.data[cle]))
-            else:
-                event = self.data[cle]
-                if event.prix[:len(s)] == s:
-                    result.append(("prix", self.data[cle]))
-                if event.date[:len(s)] == s:
-                    result.append(("date", self.data[cle]))
-                if event.place[:len(s)] == s:
-                    result.append(("place", self.data[cle]))
-                if event.contact[:len(s)] == s:
-                    result.append(("contact", self.data[cle]))
+            event = self.data[cle]
+            if s in event.nom.lower():
+                result.append(event)
+            elif s in str(event.date):
+                result.append(event)
+            elif s in event.place.lower():
+                result.append(event)
+            elif s in event.contact.lower():
+                result.append(event)
 
-            return result
+        return result
+    
+    def filtrer_gratuit(self):
+        result = []
+
+        for val in self.data.values():
+            if val.prix:
+                result.append(val)
+        
+        return result
                 
 
 
 if __name__ == "__main__":
 
     from GererLaData import *
+    from evenement import *
 
-    r = Recherche(Charger())
+    data = Charger()
 
-    res = r.recherche("2")
+    CreerEvenement(data, "Noël", "Mairie de La Roche sur Yon", "2025-12-22","info@mairieYon85.fr", True)
+
+    r = Recherche(data)
+
+    Sauver(data)
+
+    res = r.recherche("gratuit")
 
     for x in res:
-        print(f"{x[0]} | {x[1].nom}")
+        print(x)

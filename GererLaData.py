@@ -1,29 +1,38 @@
 
 
-class Evenement:
-        def __init__(self, nom, date, place, prix, contact):
-            self.nom = nom
-            self.date = date
-            self.place = place
-            self.prix = prix
-            self.contact = contact
+from evenement import Evenement
+from date import Date
 
 
-def Sauver(e: Evenement):
-    with open("pils-aldo-louis-julien-2026-01/donnees/evenements.txt", "a") as f:
-        f.write(f"\n{e.nom},{e.date},{e.place},{e.prix},{e.contact}")
+def SauverEvent(e: Evenement, id):
+    with open("donnees/evenements.txt", "r") as f:
+        f.readline()
+        for i in f.readlines():
+            print(f"compairing id {id} with {i[0]}")
+            if int(i[0]) == id: 
+                print(f"same id: {id}")
+                return
+    with open("donnees/evenements.txt", "a") as f:
+        f.write(f"\n{id},{e.nom},{e.place},{str(e.date)},{e.contact},{'*' if e.prix else ''}")  
+        print(f"event with id {id} succesfully added")
+
+
+def Sauver(d):
+    for id, e in d.items():
+        id = int(id)
+        SauverEvent(e, id)      
 
 
 def Charger():
     Data = {}
-    with open("pils-aldo-louis-julien-2026-01/donnees/evenements.txt", "r") as f:
-          
+    with open("donnees/evenements.txt", "r") as f:
+        f.readline() # retire le header
         for line in f.readlines():
-            if "nom" in line:
-                pass
-            else:
-                p = line.split(',')
-                Data[p[0]] = Evenement(p[0], p[1], p[2], p[3], p[4])
+            p = line.split(',')
+
+            d = p[3].split('-')
+            date = Date(d[0], d[1], d[2])
+            Data[p[0]] = Evenement(p[1], p[2], date, p[4], True if "*" in p[5] else False)
         return Data
                
 
@@ -33,6 +42,6 @@ if __name__ == '__main__':
     d = Charger()
 
     for k, d in d.items():
-        print(k)
+        print(d)
 
     #Sauver()
