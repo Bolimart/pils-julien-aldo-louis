@@ -1,0 +1,58 @@
+.titre-page
+{
+	text-align: center;
+}
+
+.soutitre
+{
+	text-align: center;
+}
+
+.titre
+{
+	text-align: center;
+}
+
+.liste-evenements
+{
+    display: grid;
+    grid: 13vw / auto auto auto;
+	background-color: grey;
+	corner-shape: squircle;
+	border-radius: 15px;
+	padding: 10px;
+}
+
+.evenement
+{
+	background-color: white;
+	padding: 10px;
+	corner-shape: squircle;
+	border-radius: 15px;
+	margin: 10px;
+}
+
+.evenement p {
+	margin: 2px;
+}
+
+.titre-event {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.prix-event {
+	color: orange;
+}
+
+.date-event {
+	color: red;
+}
+
+.lieu-event {
+	color: blue;
+}
+
+.contact-event {
+	color: black;
+}

@@ -31,7 +31,4 @@ class Evenement:
 
     def prix (self) :
         print(f" le prix que vous avez déterminé pour votre evenement est {self.prix_evenement}")
-        
 
-    
-        

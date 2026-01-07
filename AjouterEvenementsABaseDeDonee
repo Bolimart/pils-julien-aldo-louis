@@ -1,7 +1,0 @@
-
-
-def AjouterEventementABaseDeDonee(e: Evenement):
-    with open("evenement.txt", "w") as f:
-        txt = f.read()
-        txt += f"/n{e.nom_evenement},{date_evenement},{place_evenement},{prix_evenement},{contact_evenement}"
-        f.writelines(txt)
