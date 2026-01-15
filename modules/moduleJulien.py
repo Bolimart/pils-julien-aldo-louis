@@ -133,3 +133,7 @@ def GenererHtml():
 
     with open("guide.html", "w") as f:  # Place le code Html généré dans le fichier guide.html
         f.writelines(contents)
+
+
+def Exporter():
+    GenererHtml()

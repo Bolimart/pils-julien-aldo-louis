@@ -9,6 +9,7 @@ import modules
 
 evenements = modules.Charger()
 recherche = modules.Recherche(evenements)
+currentId = 0
 
 
 def TuiPils():
@@ -17,6 +18,31 @@ def TuiPils():
     print(" Bienvenue sur l'interface terminal de Par ici la sortie!")
     while run:
         run = SelectionneAction()
+
+
+def GuiPils():
+    exporter = lambda self : modules.Exporter()
+    modules.FenetrePrincipale(fenetreAjouter, fenetreModifier, fenetreAfficher, Sauvegarder, exporter)
+
+
+def fenetreAjouter():
+    modules.FenetreAjouter(lambda nom, place, date, contact, prix:
+                           modules.CreerEvenement(evenements, nom, place, date, contact, prix)
+                           )
+
+
+def fenetreModifier():
+    modules.FenetreModifier(lambda id, nom, place, date, contact, prix:
+                            modules.ModifierEvenement(evenements, id, nom, place, date, contact, prix)
+                            , 0)
+
+
+def fenetreAfficher():
+    modules.FenetreAfficher(getId)
+
+
+def getId(id):
+    currentId = id
 
 
 def SelectionneAction():
@@ -207,4 +233,4 @@ def Recherche():
             AfficherEvents(result, False)
 
 
-TuiPils()
+GuiPils()
