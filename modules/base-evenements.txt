@@ -1,0 +1,5 @@
+id,nom,date,localisation,prix,contact
+0,Noël,les halles,2025-25-12,mairiechallans@mairiefrance.fr,*
+1,Pâque,parc de la sablière,2026-13-04,mairiechallans@mairiefrance.fr,*
+2,Halloween,réstaurant par ici la sortie,2026-31-10,paricilasortie@gmail.com,
+3,Anniversaire Gustavio,Par ici la sortie,2026-05-06,gustavio.pils@proton.me,

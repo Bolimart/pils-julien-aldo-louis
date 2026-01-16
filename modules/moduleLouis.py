@@ -51,5 +51,6 @@ def CreerID(dataDict):
 
 def CreerEvenement(dataDict, nom_evenement: str, place_evenement:str, date_evenement: Date, contact_evenement: str, prix_evenement: bool):
     id = CreerID(dataDict)
+    print("Crée un nouvel évenement")
     dataDict[id] = Evenement(nom_evenement, place_evenement, date_evenement, contact_evenement, prix_evenement)
 

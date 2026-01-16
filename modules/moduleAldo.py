@@ -34,8 +34,8 @@ class FenetreAjouter(Tk):
 
         # Choix Gratuit/Payant (boutons radio)
         Label(self, text="Type d'événement :").pack(pady=5)
-        Radiobutton(self, text="Gratuit", variable=self.__est_gratuit, value=True).pack()
-        Radiobutton(self, text="Payant", variable=self.__est_gratuit, value=False).pack()
+        Radiobutton(self, text="Gratuit", variable=self.__estGratuit, value=True).pack()
+        Radiobutton(self, text="Payant", variable=self.__estGratuit, value=False).pack()
 
         # Bouton Valider
         Button(self, text="Exporter", command=self.validate).pack(pady=10)
@@ -47,12 +47,13 @@ class FenetreAjouter(Tk):
         print("Date :", self.__date.get())
         print("Localisation :", self.__localisation.get())
         print("Contact :", self.__contact.get())
-        print("Type :", self.__est_gratuit.get())
+        print("Type :", self.__estGratuit.get())
 
         # Créer l'évènement
         d = self.__date.get().split('-')
         date = modules.Date(d[1], d[2], d[0])
-        self.retourne(self.__nom.get(), self.__localisation.get(), date, self.__contact.get(), self.__est_gratuit.get())
+        self.retourne(self.__nom.get(), self.__localisation.get(), date, self.__contact.get(), self.__estGratuit.get())
+        self.quit()
 
 
 
@@ -107,8 +108,10 @@ class FenetreModifier(Tk):
 
         # Crée l'évènement
         d = self.__date.get().split('/')
+        print(len(d))
         date = modules.Date(d[1], d[2], d[0])
         self.retourne(self.id, self.__nom.get(), self.__localisation.get(), date, self.__contact.get(), self.__est_gratuit.get())
+        self.quit()
 
 
 class FenetrePrincipale:
